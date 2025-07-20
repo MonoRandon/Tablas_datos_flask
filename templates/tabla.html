@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabla de Plataformas Digitales</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4 text-primary">Plataformas Digitales Populares</h2>
+
+    {% if datos %}
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover text-center table-striped">
+            <thead class="table-primary">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Usuarios</th>
+                    <th>Fundado</th>
+                    <th>País</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for plataforma in datos %}
+                <tr>
+                    <td>{{ plataforma.nombre }}</td>
+                    <td>{{ plataforma.usuarios }}</td>
+                    <td>{{ plataforma.fundado }}</td>
+                    <td>{{ plataforma.pais }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Botón Más Info -->
+    <div class="text-end mt-3">
+        <a href="#" class="btn btn-outline-primary btn-lg">
+            <i class="fas fa-info-circle"></i> Más info
+        </a>
+    </div>
+    {% else %}
+        <div class="alert alert-warning text-center">
+            No hay datos disponibles para mostrar.
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
